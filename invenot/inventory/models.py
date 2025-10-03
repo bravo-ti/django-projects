@@ -82,7 +82,7 @@ class Inspection(models.Model):
 
     # Campos do Checklist
     PHYSICAL_STATE_CHOICES = [
-        ('com_marcas', 'Seminovo com marcas de uso'),
+        ('com_marcas', 'Com marcas de uso'),
         ('bom', 'Bom estado - sem marcas'),
         ('riscos', 'Riscos profundos'),
         ('outros', 'Outros'),
@@ -90,10 +90,10 @@ class Inspection(models.Model):
     physical_state = models.CharField(max_length=10, choices=PHYSICAL_STATE_CHOICES, verbose_name="Estado Físico")
     physical_state_other = models.CharField(max_length=255, blank=True, null=True, verbose_name="Outro Estado Físico")
 
-    has_charger = models.BooleanField(verbose_name="Possui Carregador?")
+    has_charger = models.BooleanField(verbose_name="Carregador?")
     CHARGER_CONDITION_CHOICES = [
-        ('usado', 'Usado'),
-        ('novo', 'Novo'),
+        ('com_risco', 'Com riscos'),
+        ('bom', 'Bom estado - sem riscos'),
     ]
     charger_condition = models.CharField(max_length=10, choices=CHARGER_CONDITION_CHOICES, blank=True, null=True, verbose_name="Condição do Carregador")
 
@@ -104,8 +104,8 @@ class Inspection(models.Model):
     configuration = models.CharField(max_length=10, choices=CONFIG_CHOICES, verbose_name="Configurações")
     configuration_mods = models.CharField(max_length=255, blank=True, null=True, verbose_name="Modificações")
     
-    os_installed = models.BooleanField(verbose_name="Sistema Operacional Instalado?")
-    has_office = models.BooleanField(verbose_name="Possui Office?")
+    os_installed = models.BooleanField(verbose_name="SO Instalado?")
+    has_office = models.BooleanField(verbose_name="Office?")
     office_version = models.CharField(max_length=100, blank=True, null=True, verbose_name="Versão do Office")
     office_key = models.CharField(max_length=100, blank=True, null=True, verbose_name="Chave do Office")
 
